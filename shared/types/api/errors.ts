@@ -1,0 +1,49 @@
+export const ERROR_CODES = {
+    // HTTP Status Codes
+    BAD_REQUEST: 400,
+    UNAUTHORIZED: 401,
+    FORBIDDEN: 403,
+    NOT_FOUND: 404,
+    CONFLICT: 409,
+    EXPIRE_TOKEN: 440,
+    INTERNAL_SERVER_ERROR: 500,
+
+    // Auth Error Codes
+    INVALID_EMAIL_AUTHORIZE: 369,
+    INVALID_CREDENTIALS: 370,
+    EMAIL_ALREADY_IN_USE: 371,
+    WEAK_PASSWORD: 372,
+    INVALID_EMAIL: 373,
+    USER_DISABLED: 374,
+    USER_NOT_FOUND: 375,
+    TOO_MANY_REQUESTS: 376,
+    OPERATION_NOT_ALLOWED: 377,
+    ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL: 378,
+    NETWORK_REQUEST_FAILED: 379,
+    REQUIRES_RECENT_LOGIN: 380,
+    POPUP_BLOCKED: 381,
+    POPUP_CLOSED_BY_USER: 382,
+    CANCELLED_POPUP_REQUEST: 383,
+    INVALID_USER_TOKEN: 384,
+    USER_TOKEN_EXPIRED: 385,
+    INVALID_API_KEY: 386,
+    INVALID_USER: 387,
+    INVALID_PASSWORD: 388,
+    INVALID_PHONE_NUMBER: 389,
+    INVALID_VERIFICATION_CODE: 390,
+    INVALID_VERIFICATION_ID: 391,
+} as const;
+
+export type ErrorCode = keyof typeof ERROR_CODES;
+
+export interface IApiError {
+  code: ErrorCode;
+  message: string;
+  details?: Record<string, unknown>;
+}
+
+export interface IErrorResponse {
+  error: IApiError;
+  status: number;
+}
+  
